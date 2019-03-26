@@ -24,8 +24,8 @@ namespace ConvertHTMLToBootstrap.Controllers
         public ActionResult ASP(Library.Models.ASPModel model)
         {
             Library.Property.ASPModel = model;
+            Library.Property.RacineURL = model.LinkProject; 
             Library.Property.RacinePathContent = Server.MapPath("Content"); 
-
             Library.Main Convert = new Library.Main();
             // create Folder 
             Convert.Create_Folder();
@@ -34,11 +34,6 @@ namespace ConvertHTMLToBootstrap.Controllers
             Convert.Create_Folder_ActionResult();
             Convert.Create_Folder_Css();
             Convert.Create_Folder_Js();
-
-            // foreach every controller for creation actionresult & view 
-
-
-
             return View();
         }
 

@@ -22,7 +22,7 @@ namespace Library
             RenderActionResults RenderActionResults = new RenderActionResults();
             foreach (HtmlNode link in doc.DocumentNode.SelectNodes("//link"))
             {
-                head = RenderActionResults.RenderHeader(link);
+                head += RenderActionResults.RenderHeader(link);
             }
         }
 
@@ -50,7 +50,7 @@ namespace Library
             foreach (var controller in Property.ASPModel.Controllers)
             {
                 FileFolder.Folder(urlViews+"/"+controller.Name);
-                RenderActionResults.Create_View(controller.actionResults);
+                RenderActionResults.Create_View(controller.Name,controller.actionResults);
             }
         }
 
