@@ -14,30 +14,6 @@ namespace Library
         {
             FileFolder.Folder(Property.RacinePathContent + "/" + Property.ASPModel.NameSpace);
         }
-
-        public void Create_Folder_Css()
-        {
-            var doc = new HtmlWeb().Load(Property.ASPModel.LinkProject);
-            String  head = "";
-            RenderActionResults RenderActionResults = new RenderActionResults();
-            foreach (HtmlNode link in doc.DocumentNode.SelectNodes("//link"))
-            {
-                head += RenderActionResults.RenderHeader(link);
-            }
-        }
-
-
-
-        public void Create_Folder_Js()
-        {
-            var doc = new HtmlWeb().Load(Property.ASPModel.LinkProject);
-            String head = "";
-            RenderActionResults RenderActionResults = new RenderActionResults();
-            foreach (HtmlNode link in doc.DocumentNode.SelectNodes("//script"))
-            {
-                head = RenderActionResults.script_renderHTML(link);
-            }
-        }
   
         public void Create_Folder_ActionResult()
         {

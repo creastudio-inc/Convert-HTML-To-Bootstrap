@@ -37,7 +37,7 @@ namespace Library
         public static List<HtmlNode> GetHtmlNode(string link)
         {
             List<HtmlNode> HtmlNode = new List<HtmlNode>();
-            var doclink = new HtmlWeb().Load(Property.RacineURL + link);
+            var doclink = new HtmlWeb().Load(link);
             var bodyNode = doclink.DocumentNode.SelectNodes("//body");
             foreach (HtmlNode body in bodyNode)
             {
@@ -51,7 +51,7 @@ namespace Library
                         HtmlNode.Add(node);
                     }
                 }
-                HtmlNode.RemoveAt(0);
+                
             }
             return HtmlNode;
         }
@@ -90,36 +90,37 @@ namespace Library
                             {
                                 if (att.Name == "href" && att.Value.Contains(".html"))
                                 {
-                                    att.Value = "@Url.Action(\"index\",\"" + att.Value.Replace(".html", "") + "\")";
+                                    //att.Value = "@Url.Action(\"index\",\"" + att.Value.Replace(".html", "") + "\")";
+                                    att.Value = "#";
                                 }
                             }
-                            if (!ChildNode.InnerHtml.Contains("@Html.CustomDisplayText") && !ChildNode.InnerHtml.Contains("<svg") && !ChildNode.InnerHtml.Contains("<img") && !ChildNode.InnerHtml.Contains("<span") && !ChildNode.InnerHtml.Contains("<div"))
-                                ChildNode.InnerHtml = "@Html.CustomDisplayText(\"" + ChildNode.InnerHtml.Replace("\n", "").Trim() + " \")";
+                            if ( !ChildNode.InnerHtml.Contains("<svg") && !ChildNode.InnerHtml.Contains("<img") && !ChildNode.InnerHtml.Contains("<span") && !ChildNode.InnerHtml.Contains("<div"))
+                                ChildNode.InnerHtml =  ChildNode.InnerHtml.Replace("\n", "").Trim();
 
                             break;
 
                         case "#text":
-                            if (!ChildNode.InnerHtml.Contains("\n") && !ChildNode.InnerHtml.Contains("@Html.CustomDisplayText"))
-                                ChildNode.InnerHtml = "@Html.CustomDisplayText(\"" + ChildNode.InnerHtml.Replace("\n", "").Trim() + " \")";
+                            if (!ChildNode.InnerHtml.Contains("\n") )
+                                ChildNode.InnerHtml =  ChildNode.InnerHtml.Replace("\n", "").Trim() ;
 
                             break;
 
                         case "p":
 
-                            if (ChildNode.ChildNodes.Count == 1 && ChildNode.ChildNodes[0].Name == "#text" && !ChildNode.InnerHtml.Contains("@Html.CustomDisplayText") && ChildNode.InnerHtml != " ")
-                                ChildNode.InnerHtml = "@Html.CustomDisplayText(\"" + ChildNode.InnerHtml.Replace("\n", "").Trim() + " \")";
+                            if (ChildNode.ChildNodes.Count == 1 && ChildNode.ChildNodes[0].Name == "#text"  && ChildNode.InnerHtml != " ")
+                                ChildNode.InnerHtml = ChildNode.InnerHtml.Replace("\n", "").Trim() ;
 
                             break;
 
                         case "div":
-                            if (ChildNode.ChildNodes.Count == 1 && ChildNode.ChildNodes[0].Name == "#text" && !ChildNode.InnerHtml.Contains("@Html.CustomDisplayText") && ChildNode.InnerHtml != " ")
-                                ChildNode.InnerHtml = "@Html.CustomDisplayText(\"" + ChildNode.InnerHtml.Replace("\n", "").Trim() + " \")";
+                            if (ChildNode.ChildNodes.Count == 1 && ChildNode.ChildNodes[0].Name == "#text"  && ChildNode.InnerHtml != " ")
+                                ChildNode.InnerHtml =  ChildNode.InnerHtml.Replace("\n", "").Trim() ;
 
                             break;
 
                         case "span":
-                            if (!ChildNode.InnerHtml.Contains("@Html.CustomDisplayText") && !ChildNode.InnerHtml.Contains("<i>"))
-                                ChildNode.InnerHtml = "@Html.CustomDisplayText(\"" + ChildNode.InnerHtml.Replace("\n", "").Trim() + " \")";
+                            if ( !ChildNode.InnerHtml.Contains("<i>"))
+                                ChildNode.InnerHtml =  ChildNode.InnerHtml.Replace("\n", "").Trim() ;
 
                             break;
 
@@ -132,8 +133,8 @@ namespace Library
                                 }
                                 if (att.Name == "placeholder")
                                 {
-                                    if (!att.Value.Contains("\n") && !att.Value.Contains("@Html.CustomDisplayText"))
-                                        att.Value = "@Html.CustomDisplayText(\"" + att.Value.Replace("\n", "").Trim() + " \")";
+                                    if (!att.Value.Contains("\n"))
+                                        att.Value =  att.Value.Replace("\n", "").Trim() ;
                                 }
                             }
                             break;
@@ -152,9 +153,9 @@ namespace Library
         {
             var doc = new HtmlWeb().Load(linkProject);
             String Html = "", head = "", header = "", footer = "", script = "";
-            foreach (HtmlNode link in doc.DocumentNode.SelectNodes("//head"))
+            foreach (HtmlNode link in doc.DocumentNode.SelectNodes("//link"))
             {
-                head = RenderHeader(link);
+                head += RenderHeader(link);
             }
             foreach (HtmlNode link in doc.DocumentNode.SelectNodes("//body"))
             {
@@ -203,7 +204,7 @@ namespace Library
         {
             String Html = "";
             Html += "<!DOCTYPE html> \n <html>   " + Environment.NewLine;
-            Html += Environment.NewLine + "" + head + Environment.NewLine;
+            Html += Environment.NewLine + "<head>" + head + "</head>" + Environment.NewLine;
             Html += "<body> " + Environment.NewLine;
             Html += header + Environment.NewLine;
             Html += "@RenderBody()" + Environment.NewLine;
@@ -219,25 +220,33 @@ namespace Library
              
                 if (node.Name == "link")
                 {
-                    foreach (var att in node.Attributes)
-                    {
-                        if (att.Name == "href")
+                var attcss = node.Attributes.Where(x => x.Name == "rel" && x.Value == "stylesheet").FirstOrDefault();
+                if (attcss != null) {
+                    var att = node.Attributes.Where(x => x.Name == "href").FirstOrDefault();
+                    if (att.Name == "href"  )
                         {
                             String linkpath = "";
                             if (att.Value.Contains("//code.jquery.com"))
                             {
                                 linkpath = "http:" + att.Value;
                             }
-                            else
+                            else 
+                            if (att.Value.Contains("https://fonts.")){
+                                linkpath =  att.Value;
+                                att.Value = linkpath;
+                        }
+                        else
                             {
-                                linkpath = Property.RacineURL + att.Value;
-                            }
+                            linkpath = Property.RacineURL+"/" + att.Value;
                             var subpath = att.Value.Split('/');
                             FileFolder.downloadfile(linkpath, "css/" + subpath[subpath.Length - 1]);
                             att.Value = "~/Content/css/" + subpath[subpath.Length - 1];
 
-                        }
+                        } 
+
+
                     }
+                }
 
                     head += node.OuterHtml + Environment.NewLine;
                 }
@@ -265,7 +274,7 @@ namespace Library
                     }
                     else
                     {
-                        linkpath = Property.RacinePathContent + att.Value;
+                        linkpath = Property.RacineURL+"/" + att.Value;
                     }
                     var subpath = att.Value.Split('/');
                     FileFolder.downloadfile(linkpath, "scripts/js/" + subpath[subpath.Length - 1]);

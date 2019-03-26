@@ -22,7 +22,7 @@ namespace Library
 
         public string GetNamespace()
         {
-            return "namespace "+ Property.ASPModel.NameSpace+ "{";
+            return "namespace "+ Property.ASPModel.NameSpace+ ".Controllers";
         }
         public string GetControllers(String Name)
         {
@@ -43,7 +43,7 @@ namespace Library
             foreach(var item in actionResults)
             {
                 stringresult += "\n";
-                stringresult = "\t public ActionResult " + item.Name+ "() \n";
+                stringresult += "\t public ActionResult " + item.Name+ "() \n";
                 stringresult += "\t \t {\n";
                 stringresult += "\t \t \t return View();\n";
                 stringresult += "\t \t }\n";

@@ -32,9 +32,7 @@ namespace ConvertHTMLToBootstrap.Controllers
             // create folder  controller & ActionResult & css & js  
             Convert.Create_Folder_Controller();
             Convert.Create_Folder_ActionResult();
-            Convert.Create_Folder_Css();
-            Convert.Create_Folder_Js();
-            return View();
+             return View();
         }
 
         public ActionResult ASP2(string id)
