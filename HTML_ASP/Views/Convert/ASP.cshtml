@@ -1,0 +1,162 @@
+﻿@{
+    ViewBag.Title = "ASP";
+}
+
+<div class="row">
+    <div class="col-lg-8 col-lg-offset-2">
+        <div class="demo-form-wrapper">
+
+            @using (Html.BeginForm())
+            {
+
+
+                     <ul class="steps">
+                        <li class="step col-xs-4 active">
+                            <a class="step-segment" href="#tab-1" data-toggle="tab">
+                                <span class="step-icon icon icon-user"></span>
+                            </a>
+                            <div class="step-content">
+                                <strong class="hidden-xs">General Details</strong>
+                            </div>
+                        </li>
+                        <li class="step col-xs-4">
+                            <a class="step-segment" href="#tab-2" data-toggle="tab">
+                                <span class="step-icon icon icon-cubes"></span>
+                            </a>
+                            <div class="step-content">
+                                <strong class="hidden-xs">
+                                    Controllers and Action Methods
+                                </strong>
+                            </div>
+                        </li>
+                        <li class="step col-xs-4">
+                            <a class="step-segment" href="#tab-3" data-toggle="tab">
+                                <span class="step-icon icon icon-cogs"></span>
+                            </a>
+                            <div class="step-content">
+                                <strong class="hidden-xs">Setting Details</strong>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="tab-1" class="tab-pane active">
+                            <h4 class="text-center m-y-md">
+                                <span>General Details</span>
+                                <br />
+                                <small>We need some general information about your project</small>
+                            </h4>
+                            <div class="row">
+                                <div class="col-sm-8 col-sm-offset-2">
+                                    <div class="form-group">
+                                        <label for="NameofProject" class="control-label">Name of project</label>
+                                        <input id="NameofProject" class="form-control" type="text" name="NameProject" placeholder="Name Project" >
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="NameSpace" class="control-label">NameSpace</label>
+                                        <input id="NameSpace" class="form-control" type="text" name="NameSpace" placeholder="NameSpace">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="LinkProject" class="control-label">link project</label>
+                                        <input id="LinkProject" class="form-control" type="text" name="LinkProject" placeholder="link">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="tab-2" class="tab-pane">
+                            <h4 class="text-center m-y-md">
+                                <span>   Controllers and Action Methods</span>
+                                <br />
+                                <small>if you want to remove its controller, click on the "delete" button</small>
+
+                            </h4>
+                            <div class="row gutter-xs">
+
+
+
+
+                                <div class="col-sm-4" id="addnewcontroller">
+                                    <div class="card">
+                                        <div class="card-img overlay">
+                                            <div class="overlay-image">
+                                                <img class="img-responsive" src="http://www.orangeinks.com/wp-content/uploads/2011/09/Google-plus-wallpaper-plus-logo-blue.png" alt="Paris, France">
+                                            </div>
+
+                                        </div>
+                                        <div class="overlay-content bg-info-a75">
+                                            <div class="fh text-center">
+                                                <div class="fh-m">
+                                                    <div class="card-body">
+                                                        <h3 class="card-title">New Controller</h3>
+
+                                                    </div>
+
+                                                    <div class="card-body">
+                                                        <p class="card-text">
+                                                            <small>you can add a new controller by clicking this button</small>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div> 
+                        </div>
+                        <div id="tab-3" class="tab-pane">
+                            <h4 class="text-center m-y-md">
+                                <span>Setting Details</span>
+                            </h4>
+                            <div class="row">
+
+                                <div class="col-sm-6 col-sm-offset-3">
+                                    <div class="form-group">
+                                        <label for="NameTranslate" class="control-label">Name Translate</label>
+                                        <input id="NameTranslate" class="form-control" type="text" name="NameTranslate" placeholder="Name Translate" >
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="DatabaseString" class="control-label"> Database String</label>
+                                        <input id="DatabaseString" class="form-control" type="text" name="DatabaseString"  placeholder="Database String">
+                                    </div> 
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-primary btn-block" type="submit">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+             }
+        </div>
+    </div>
+</div>
+
+    @section scripts{
+        <script>
+              $.get('@Url.Action("ASP2", "Convert")', { 'id': 0 }, function (data) {
+                    $("#addnewcontroller").before(data);
+                });
+            $("#addnewcontroller").click(function () {
+                var count = $(".divcontroller").length;
+                $.get('@Url.Action("ASP2", "Convert")', { 'id': count }, function (data) {
+                    $("#addnewcontroller").before(data);
+                });
+            });
+
+            $('#nav-tabs a[href="#profile-61_1"]').trigger('click');
+
+
+            function addnewaction(id) {
+                var NameAction = document.getElementById("NameAction_"+id ).value;
+                var TypeAction = document.getElementById("TypeAction_" + id ).value;
+                var LinkAction = document.getElementById("LinkAction_" + id ).value;
+                var count = $("#List_" + id +" div[class= 'media']").length;
+                $.get('@Url.Action("ASP3", "Convert")', { 'id': id, 'Name': NameAction, 'Type': TypeAction, 'Link': LinkAction, 'count': count }, function (data) {
+                    $("#ListAction_" + id).before(data);
+                    count++;
+                });
+                $('.nav-tabs a[href="#profile-61_' + id+'"]').trigger('click');
+            }
+      
+
+        </script>
+    }

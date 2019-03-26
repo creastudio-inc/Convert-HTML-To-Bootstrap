@@ -1,0 +1,108 @@
+﻿
+@{
+    ViewBag.Title = "ASP";
+    Layout = null;
+}
+<div class="col-sm-4 divcontroller">
+    <div class="card">
+        <div class="row">
+            <div class="col-sm-12">
+                <button class="btn btn-primary btn-sm pull-right" onclick="$(this).parent().parent().parent().parent().remove();" type="button" style="margin: 23px;">
+                    Delete
+                </button>
+                <h4 class="text-center">
+                    Controller @ViewBag.ID
+                    <br />
+                </h4>
+                <div class="demo-md-form-wrapper">
+                    <div class="md-form-group md-label-floating has-value ">
+                        <input class="md-form-control" type="text" name="Controllers[@ViewBag.ID].Name" value="" placeholder="controller name">
+                        <label class="md-control-label">Set the name of Controller</label>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col-sm-12">
+
+                <div class="panel m-b-lg">
+                    <ul class="nav nav-tabs">
+                        <li class="active">
+                            <a href="#home-61_@ViewBag.ID" data-toggle="tab" aria-expanded="true">
+                                <span class="icon icon-home"></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="#profile-61_@ViewBag.ID" data-toggle="tab" aria-expanded="false">
+                                <span class="fa fa-list"></span>
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#dropdown-61_@ViewBag.ID" data-toggle="tab" aria-expanded="false">
+                                <span class="fa fa-plus"></span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane fade active in" id="home-61_@ViewBag.ID">
+                            <p class="card-text">
+                                <small>
+                                    you can add a many ActionResult by clicking this button "<span class="fa fa-plus"></span>" from the tab 
+                                    or "<span class="fa fa-list"></span>" for display list for all ActionResults
+                                </small>
+                            </p>
+
+                        </div>
+                        <div class="tab-pane fade" id="profile-61_@ViewBag.ID">
+                            <div class="media-list" id="List_@ViewBag.ID">
+                                <h4>
+                                    ActionResults
+                                </h4>
+                                <div id="ListAction_@ViewBag.ID"></div>
+                            </div>
+                        </div>
+                        <div class="tab-pane row fade" id="dropdown-61_@ViewBag.ID">
+                            <div class="col-lg-6">
+
+
+
+                                <div class="form-group">
+                                    <input class="form-control" type="text" id="NameAction_@ViewBag.ID" value="">
+                                    <label class="col-sm-12 control-label">Name Action</label>
+                                </div>
+
+
+
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <select id="TypeAction_@ViewBag.ID" class="form-control">
+                                        <option value="Empty">Empty</option>
+                                        <option value="List">List</option>
+                                        <option value="Create">Create</option>
+                                        <option value="Edit">Edit</option>
+                                        <option value="Delete">Delete</option>
+                                    </select>
+                                    <label class="col-sm-12 control-label">Type</label>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <input class="form-control" type="text" id="LinkAction_@ViewBag.ID" value="">
+                                    <label class="col-sm-12 control-label">Link Action</label>
+                                </div>
+                            </div> 
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <button class="btn btn-outline-info" onclick="addnewaction(@ViewBag.ID);"  type="button">add</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

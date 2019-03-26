@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConvertHTML_ASP", "ConvertHTML_ASP\ConvertHTML_ASP.csproj", "{15B53DD0-CC11-4C1F-AB28-66D25879DA0C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HTML_ASP", "HTML_ASP\HTML_ASP.csproj", "{C7D08D71-0E5E-467A-98DD-FD484C44F880}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{15B53DD0-CC11-4C1F-AB28-66D25879DA0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15B53DD0-CC11-4C1F-AB28-66D25879DA0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15B53DD0-CC11-4C1F-AB28-66D25879DA0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15B53DD0-CC11-4C1F-AB28-66D25879DA0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7D08D71-0E5E-467A-98DD-FD484C44F880}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7D08D71-0E5E-467A-98DD-FD484C44F880}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7D08D71-0E5E-467A-98DD-FD484C44F880}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7D08D71-0E5E-467A-98DD-FD484C44F880}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {11BFE7E6-8189-4113-86CE-94E1BF4B71BE}
+	EndGlobalSection
+EndGlobal

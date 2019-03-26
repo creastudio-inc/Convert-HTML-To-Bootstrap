@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "ASP";
+    Layout = null;
+
+}
+
+<div class="media">
+    <div class="media-left" onclick="@ViewBag.Link">
+        <span class="icon icon-folder bg-gray circle sq-48"></span>
+    </div>
+    <div class="media-middle media-body">
+        <h5 class="media-heading">@ViewBag.Name</h5>
+        <small>@ViewBag.Type</small>
+        <input type="hidden" name="Controllers[@ViewBag.ID].actionResults[@ViewBag.count].Name" value="@ViewBag.Name" />
+        <input type="hidden" name="Controllers[@ViewBag.ID].actionResults[@ViewBag.count].Type" value="@ViewBag.Type" />
+        <input type="hidden" name="Controllers[@ViewBag.ID].actionResults[@ViewBag.count].Link" value="@ViewBag.Link" />
+    </div>
+    <div class="media-middle media-right"  onclick="$(this).parent().remove();">
+        <span class="icon icon-remove"></span>
+    </div>
+</div>
