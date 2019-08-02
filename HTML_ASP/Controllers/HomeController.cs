@@ -32,5 +32,12 @@ namespace ConvertHTMLToBootstrap.Controllers
 
             return View();
         }
+
+        public ActionResult Soon()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
     }
 }

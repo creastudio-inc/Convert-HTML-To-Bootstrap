@@ -676,6 +676,7 @@
     <Content Include="Views\Convert\ASP.cshtml" />
     <Content Include="Views\Convert\ASP2.cshtml" />
     <Content Include="Views\Convert\ASP3.cshtml" />
+    <Content Include="Views\Home\Soon.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
