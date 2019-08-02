@@ -15,14 +15,20 @@ namespace Library
             FileFolder.Folder(Property.RacinePathContent + "/" + Property.ASPModel.NameSpace);
         }
   
+        public void Create_Layout()
+        {
+            var urlViews = Property.RacinePathContent + "/" + Property.ASPModel.NameProject + "/Views";
+            Property.RacinePathViews = urlViews;
+            FileFolder.Folder(urlViews);
+            FileFolder.Folder(urlViews + "/Shared");
+            RenderLayout.Create_Layout(Property.ASPModel.LinkProject);
+        }
+  
         public void Create_Folder_ActionResult()
         {
             var urlViews = Property.RacinePathContent + "/" + Property.ASPModel.NameProject + "/Views";
             Property.RacinePathViews = urlViews;
             FileFolder.Folder(urlViews);
-            RenderActionResults RenderActionResults = new RenderActionResults();
-            FileFolder.Folder(urlViews + "/Shared");
-            RenderActionResults.Create_Layout(Property.ASPModel.LinkProject);
             foreach (var controller in Property.ASPModel.Controllers)
             {
                 FileFolder.Folder(urlViews+"/"+controller.Name);

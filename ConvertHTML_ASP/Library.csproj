@@ -7,8 +7,8 @@
     <ProjectGuid>{15B53DD0-CC11-4C1F-AB28-66D25879DA0C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ConvertHTML_ASP</RootNamespace>
-    <AssemblyName>ConvertHTML_ASP</AssemblyName>
+    <RootNamespace>Library</RootNamespace>
+    <AssemblyName>Library</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -154,9 +154,12 @@
     <Compile Include="Library\Property.cs" />
     <Compile Include="Library\RenderActionResults.cs" />
     <Compile Include="Library\RenderControllers.cs" />
+    <Compile Include="Library\RenderLayout.cs" />
     <Compile Include="Models\ASPActionResult.cs" />
     <Compile Include="Models\ASPController.cs" />
     <Compile Include="Models\ASPModel.cs" />
+    <Compile Include="Models\ASPScripts.cs" />
+    <Compile Include="Models\ASPStyles.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

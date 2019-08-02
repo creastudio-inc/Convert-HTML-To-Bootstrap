@@ -25,12 +25,14 @@ namespace ConvertHTMLToBootstrap.Controllers
         {
             Library.Property.ASPModel = model;
             Library.Property.RacineURL = model.LinkProject; 
+            Library.Property.RacinePathblankPage = model.blankPage; 
             Library.Property.RacinePathContent = Server.MapPath("Content"); 
             Library.Main Convert = new Library.Main();
             // create Folder 
             Convert.Create_Folder();
             // create folder  controller & ActionResult & css & js  
             Convert.Create_Folder_Controller();
+            Convert.Create_Layout();
             Convert.Create_Folder_ActionResult();
              return View();
         }

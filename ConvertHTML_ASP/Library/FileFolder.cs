@@ -66,22 +66,30 @@ namespace Library
         }
         public static void downloadfile(String link, String path)
         {
-            var subpath = path.Split('/');
-            String sub = "";
-            for (int i = 0; i < subpath.Length - 1; i++)
+            try
             {
-                sub += subpath[i] + "/";
-                Folder(Property.RacinePathContent + "/" + sub);
+ 
+                var subpath = path.Split('/');
+                String sub = "";
+                for (int i = 0; i < subpath.Length - 1; i++)
+                {
+                    sub += subpath[i] + "/";
+                    Folder(Property.RacinePathContent + "/" + sub);
+                }
+                var pathlocal = Property.RacinePathContent + "\\" + path;
+                using (WebClient wc = new WebClient())
+                {
+                    wc.DownloadFile(
+                        // Param1 = Link of file
+                        new System.Uri(link),
+                       // Param2 = Path to save
+                       pathlocal
+                    );
+                }
             }
-            var pathlocal = Property.RacinePathContent + "\\" + path;
-            using (WebClient wc = new WebClient())
+            catch(Exception ex)
             {
-                wc.DownloadFile(
-                    // Param1 = Link of file
-                    new System.Uri(link),
-                   // Param2 = Path to save
-                   pathlocal
-                );
+                throw ex;
             }
         }
 

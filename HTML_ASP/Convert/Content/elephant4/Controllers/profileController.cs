@@ -4,10 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc; 
 
-namespace elephant{ 
+namespace elephant4.Controllers{ 
 	 public class profileController : Controller{ 
 
-	 public ActionResult profile() 
+	 public ActionResult Cv() 
 	 	 {
 	 	 	 return View();
 	 	 }

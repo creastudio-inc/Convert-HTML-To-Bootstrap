@@ -8,18 +8,56 @@ using Library.Models;
 
 namespace Library
 {
-    public class RenderActionResults
+    public static class RenderActionResults
     {
-        internal void Create_View(String controllerName,List<ASPActionResult> actionResults)
+        public static void Create_View(String controllerName,List<ASPActionResult> actionResults)
         {
             foreach (var actionResult in actionResults)
             {               
+                string contentscss = GetPageCodeCss(actionResult.Link);
+                string contentsJs = GetPageCodeJs(actionResult.Link);
                 string contents = GetPageCode(actionResult.Link);
-                FileFolder.File(Property.RacinePathViews + "/"+ controllerName+"/" + actionResult.Name+".cshtml", contents);
+                string codeHtmlFinal = "";
+                codeHtmlFinal += Environment.NewLine + "{" + Environment.NewLine;
+                codeHtmlFinal += Environment.NewLine + "@ViewBag.Title ='"+actionResult.Name+"';" + Environment.NewLine;
+                codeHtmlFinal += Environment.NewLine + "}" + Environment.NewLine;
+                codeHtmlFinal += Environment.NewLine + "@section styles{" + Environment.NewLine;
+                codeHtmlFinal += Environment.NewLine + contentscss + Environment.NewLine;
+                codeHtmlFinal += Environment.NewLine + "}" + Environment.NewLine;
+                codeHtmlFinal += Environment.NewLine + "@section scripts{" + Environment.NewLine;
+                codeHtmlFinal += Environment.NewLine + contentsJs + Environment.NewLine;
+                codeHtmlFinal += Environment.NewLine + "}" + Environment.NewLine;
+                codeHtmlFinal += Environment.NewLine + contents + Environment.NewLine;
+
+                FileFolder.File(Property.RacinePathViews + "/"+ controllerName+"/" + actionResult.Name+".cshtml", codeHtmlFinal);
             }
         }
 
-        private string GetPageCode(string link)
+        private static string GetPageCodeCss(string link)
+        {
+            List<HtmlNode> HtmlNode = new List<HtmlNode>();
+            var doclink = new HtmlWeb().Load(link);
+            string head = "";
+            foreach (HtmlNode linkscript in doclink.DocumentNode.SelectNodes("//link"))
+            {
+                head += RenderActionResults.RenderHeaderStyle(linkscript);
+            }
+            return head;
+        }
+        private static string GetPageCodeJs(string link)
+        {
+            var doclink = new HtmlWeb().Load(link);
+
+            string script = "";
+            foreach (HtmlNode linkscript in doclink.DocumentNode.SelectNodes("//script"))
+            {
+                script += RenderActionResults.RenderHeaderScript(linkscript);
+            }
+            return script;
+
+        }
+
+        private static string GetPageCode(string link)
         {
             var HtmlNodes = GetHtmlNode(link);
 
@@ -34,10 +72,12 @@ namespace Library
             }
             return contentsview;
         }
+
         public static List<HtmlNode> GetHtmlNode(string link)
         {
             List<HtmlNode> HtmlNode = new List<HtmlNode>();
             var doclink = new HtmlWeb().Load(link);
+          
             var bodyNode = doclink.DocumentNode.SelectNodes("//body");
             foreach (HtmlNode body in bodyNode)
             {
@@ -45,6 +85,7 @@ namespace Library
                 {
                     if (node.Name == "header" || node.Name == "#text" || node.Name == "footer" || node.Name == "script")
                     {
+
                     }
                     else
                     {
@@ -54,6 +95,47 @@ namespace Library
                 
             }
             return HtmlNode;
+        }
+
+        private static string RenderHeaderScript(HtmlNode node)
+        {
+            String script = "";
+
+            if (node.Name == "script")
+            {
+                var attjs = node.Attributes.Where(x => x.Name == "src").FirstOrDefault();
+                if (attjs != null)
+                {
+                    if (!Library.Property.ASPScripts.links.Contains(attjs.Value))
+                    {
+                        String linkpath = "";
+                        if (attjs.Value.Contains("//cdnjs") || attjs.Value.Contains("//code"))
+                        {
+                            if (attjs.Value.Contains("https:"))
+                            {
+                                linkpath = attjs.Value;
+                            }
+                            else
+                            {
+                                linkpath = "http:" + attjs.Value;
+                            }
+                        }
+                        else
+                        {
+                            linkpath = Property.RacineURL + "/" + attjs.Value;
+                        }
+                        var subpath = attjs.Value.Split('/');
+                        FileFolder.downloadfile(linkpath, "scripts/js/" + subpath[subpath.Length - 1]);
+                        attjs.Value = "~/Content/scripts/js/" + subpath[subpath.Length - 1];
+                        script += node.OuterHtml + Environment.NewLine;
+
+                    }
+
+                }
+
+            }
+
+            return script;
         }
 
         public static void ChildNodes_DIV(HtmlNode footer)
@@ -149,71 +231,8 @@ namespace Library
         }
 
 
-        public void Create_Layout(string linkProject)
-        {
-            var doc = new HtmlWeb().Load(linkProject);
-            String Html = "", head = "", header = "", footer = "", script = "";
-            foreach (HtmlNode link in doc.DocumentNode.SelectNodes("//link"))
-            {
-                head += RenderHeader(link);
-            }
-            foreach (HtmlNode link in doc.DocumentNode.SelectNodes("//body"))
-            {
-                foreach (var node in link.ChildNodes)
-                {
-                    if (node.Name == "header")
-                    {
-                        header = header_renderHTML(node);
-                    }
-                    if (node.Name == "div")
-                    {
-                    }
-                    if (node.Name == "footer")
-                    {
-                        footer = footer_renderHTML(node);
-                    }
-                    if (node.Name == "script")
-                    {
-                        script += script_renderHTML(node);
-                    }
-                }
-            }
-            Html = Layout_renderHTML(head, header, footer, script);
-            FileFolder.File(Property.RacinePathViews + "/Shared/_Layout.cshtml", Html);
-        }
 
-        public static String footer_renderHTML(HtmlNode footer)
-        {
-            foreach (var ChildNode in footer.ChildNodes)
-            {
-                ChildNodes_DIV(ChildNode);
-            }
-            return footer.OuterHtml + Environment.NewLine;
-        }
 
-        public static String header_renderHTML(HtmlNode header)
-        {
-            foreach (var ChildNode in header.ChildNodes)
-            {
-                ChildNodes_DIV(ChildNode);
-            }
-            return header.OuterHtml + Environment.NewLine;
-        }
-
-        public static String Layout_renderHTML(String head, String header, String footer, String script)
-        {
-            String Html = "";
-            Html += "<!DOCTYPE html> \n <html>   " + Environment.NewLine;
-            Html += Environment.NewLine + "<head>" + head + "</head>" + Environment.NewLine;
-            Html += "<body> " + Environment.NewLine;
-            Html += header + Environment.NewLine;
-            Html += "@RenderBody()" + Environment.NewLine;
-            Html += footer + Environment.NewLine;
-            Html += script + Environment.NewLine;
-            Html += "</body>" + Environment.NewLine + "</html>" + Environment.NewLine;
-            return Html;
-
-        }
         public static String RenderHeader(HtmlNode node)
         {
             String head = "";
@@ -225,7 +244,9 @@ namespace Library
                     var att = node.Attributes.Where(x => x.Name == "href").FirstOrDefault();
                     if (att.Name == "href"  )
                         {
-                            String linkpath = "";
+                        Library.Property.ASPStyles.links.Add(att.Value);
+
+                        String linkpath = "";
                             if (att.Value.Contains("//code.jquery.com"))
                             {
                                 linkpath = "http:" + att.Value;
@@ -242,8 +263,7 @@ namespace Library
                             FileFolder.downloadfile(linkpath, "css/" + subpath[subpath.Length - 1]);
                             att.Value = "~/Content/css/" + subpath[subpath.Length - 1];
 
-                        } 
-
+                        }
 
                     }
                 }
@@ -254,35 +274,51 @@ namespace Library
             return head;
         }
 
-        public static String script_renderHTML(HtmlNode script)
+        
+        public static String RenderHeaderStyle(HtmlNode node)
         {
-            foreach (var att in script.Attributes)
-            {
-                if (att.Name == "src")
+            String head = "";
+             
+                if (node.Name == "link")
                 {
-                    String linkpath = "";
-                    if (att.Value.Contains("//cdnjs") || att.Value.Contains("//code"))
+                var attcss = node.Attributes.Where(x => x.Name == "rel" && x.Value == "stylesheet").FirstOrDefault();
+                if (attcss != null) {
+                    var att = node.Attributes.Where(x => x.Name == "href").FirstOrDefault();
+                    if (!Library.Property.ASPStyles.links.Contains(att.Value))
                     {
-                        if (att.Value.Contains("https:"))
+                        if (att.Name == "href")
                         {
-                            linkpath = att.Value;
-                        }
-                        else
-                        {
-                            linkpath = "http:" + att.Value;
+                            String linkpath = "";
+                            if (att.Value.Contains("//code.jquery.com"))
+                            {
+                                linkpath = "http:" + att.Value;
+                            }
+                            else
+                            if (att.Value.Contains("https://fonts."))
+                            {
+                                linkpath = att.Value;
+                                att.Value = linkpath;
+                            }
+                            else
+                            {
+                                linkpath = Property.RacineURL + "/" + att.Value;
+                                var subpath = att.Value.Split('/');
+                                FileFolder.downloadfile(linkpath, "css/" + subpath[subpath.Length - 1]);
+                                att.Value = "~/Content/css/" + subpath[subpath.Length - 1];
+
+                            }
+                            head += node.OuterHtml + Environment.NewLine;
+
                         }
                     }
-                    else
-                    {
-                        linkpath = Property.RacineURL+"/" + att.Value;
-                    }
-                    var subpath = att.Value.Split('/');
-                    FileFolder.downloadfile(linkpath, "scripts/js/" + subpath[subpath.Length - 1]);
-                    att.Value = "~/Content/scripts/js/" + subpath[subpath.Length - 1];
+                  
                 }
-            }
-            return script.OuterHtml + Environment.NewLine;
+
+                }
+             
+            return head;
         }
+
 
     }
 }

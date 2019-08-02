@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28010.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29020.237
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConvertHTML_ASP", "ConvertHTML_ASP\ConvertHTML_ASP.csproj", "{15B53DD0-CC11-4C1F-AB28-66D25879DA0C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library", "ConvertHTML_ASP\Library.csproj", "{15B53DD0-CC11-4C1F-AB28-66D25879DA0C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HTML_ASP", "HTML_ASP\HTML_ASP.csproj", "{C7D08D71-0E5E-467A-98DD-FD484C44F880}"
 EndProject

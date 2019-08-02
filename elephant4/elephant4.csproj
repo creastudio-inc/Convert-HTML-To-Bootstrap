@@ -126,7 +126,8 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\ProfileController.cs" />
+    <Compile Include="Controllers\dashboardController.cs" />
+    <Compile Include="Controllers\profileController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -138,10 +139,13 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\application.min.css" />
+    <Content Include="Content\css\dashboard-3.min.css" />
     <Content Include="Content\css\elephant.min.css" />
+    <Content Include="Content\css\profile.min.css" />
     <Content Include="Content\css\vendor.min.css" />
     <Content Include="Content\scripts\js\application.min.js" />
     <Content Include="Content\scripts\js\elephant.min.js" />
+    <Content Include="Content\scripts\js\profile.min.js" />
     <Content Include="Content\scripts\js\vendor.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -169,9 +173,10 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\dashboard\dashboard2.cshtml" />
+    <Content Include="Views\dashboard\dashboard3.cshtml" />
+    <Content Include="Views\profile\Cv.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Profile\Profile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -11,6 +11,7 @@ namespace Library.Models
         public String NameProject { get; set; }
         public String NameSpace { get; set; }
         public String LinkProject { get; set; }
+        public String blankPage { get; set; }
         public String NameTranslate { get; set; }
         public String DatabaseString { get; set; }
         public List<ASPController> Controllers { get; set; }

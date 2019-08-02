@@ -1,7 +1,28 @@
+
+{
+
+@ViewBag.Title ='Cv';
+
+}
+
+@section styles{
+
+<link rel="stylesheet" href="~/Content/css/profile.min.css">
+
+
+}
+
+@section scripts{
+
+<script src="~/Content/scripts/js/profile.min.js"></script>
+
+
+}
+
 <div class="layout-header">
       <div class="navbar navbar-default">
         <div class="navbar-header">
-          <a class="navbar-brand navbar-brand-center" href="@Url.Action("index","index")">
+          <a class="navbar-brand navbar-brand-center" href="#">
             <img class="navbar-brand-logo" src="~/Content/img/logo-inverse.svg" alt="Elephant">
           </a>
           <button class="navbar-toggler visible-xs-block collapsed" type="button" data-toggle="collapse" data-target="#sidenav">
@@ -32,7 +53,7 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg">
                   <div class="dropdown-header">
-                    <a class="dropdown-link" href="@Url.Action("index","compose")">New Message</a>
+                    <a class="dropdown-link" href="#">New Message</a>
                     <h5 class="dropdown-heading">Recent messages</h5>
                   </div>
                   <div class="dropdown-body">
@@ -280,30 +301,30 @@
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right">
                   <li>
-                    <a href="@Url.Action("index","upgrade")"><h5 class="navbar-upgrade-heading">Upgrade Now<small class="navbar-upgrade-notification">You have 15 days left in your trial.</small></h5></a>
+                    <a href="#"><h5 class="navbar-upgrade-heading">Upgrade Now<small class="navbar-upgrade-notification">You have 15 days left in your trial.</small></h5></a>
                   </li>
                   <li class="divider"></li>
                   <li class="navbar-upgrade-version">Version: 1.0.0</li>
                   <li class="divider"></li>
-                  <li><a href="@Url.Action("index","contacts")">Contacts</a></li>
-                  <li><a href="@Url.Action("index","profile")">Profile</a></li>
-                  <li><a href="@Url.Action("index","login-1")">Sign out</a></li>
+                  <li><a href="#">Contacts</a></li>
+                  <li><a href="#">Profile</a></li>
+                  <li><a href="#">Sign out</a></li>
                 </ul>
               </li>
               <li class="visible-xs-block">
-                <a href="@Url.Action("index","contacts")">
+                <a href="#">
                   <span class="icon icon-users icon-lg icon-fw"></span>
                   Contacts
                 </a>
               </li>
               <li class="visible-xs-block">
-                <a href="@Url.Action("index","profile")">
+                <a href="#">
                   <span class="icon icon-user icon-lg icon-fw"></span>
                   Profile
                 </a>
               </li>
               <li class="visible-xs-block">
-                <a href="@Url.Action("index","login-1")">
+                <a href="#">
                   <span class="icon icon-power-off icon-lg icon-fw"></span>
                   Sign out
                 </a>
@@ -315,7 +336,7 @@
                 <span class="d-ib"><a class="title-bar-shortcut" href="#" title="Add to shortcut list" data-container="body" data-toggle-text="Remove from shortcut list" data-trigger="hover" data-placement="right" data-toggle="tooltip"><span class="sr-only">Add to shortcut list</span></a></span>
               </h1>
               <p class="title-bar-description">
-                <small>You can personalize your dashboard by using<a href="@Url.Action("index","widgets")">widgets</a>.</small>
+                <small>You can personalize your dashboard by using<a href="#">widgets</a>.</small>
               </p>
             </div>
           </nav>
@@ -340,26 +361,26 @@
                 </li>
                 <li class="sidenav-heading">Navigation</li>
                 <li class="sidenav-item has-subnav">
-                  <a href="@Url.Action("index","dashboard-1")" aria-haspopup="true">
+                  <a href="#" aria-haspopup="true">
                     <span class="sidenav-icon icon icon-works">&#103;</span>
                     <span class="sidenav-label">Dashboards</span>
                   </a>
                   <ul class="sidenav level-2 collapse">
                     <li class="sidenav-heading">Dashboards</li>
-                    <li><a href="@Url.Action("index","dashboard-1")">Dashboard 1</a></li>
-                    <li><a href="@Url.Action("index","dashboard-2")">Dashboard 2</a></li>
-                    <li><a href="@Url.Action("index","dashboard-3")">Dashboard 3</a></li>
+                    <li><a href="#">Dashboard 1</a></li>
+                    <li><a href="#">Dashboard 2</a></li>
+                    <li><a href="#">Dashboard 3</a></li>
                   </ul>
                 </li>
                 <li class="sidenav-item">
-                  <a href="@Url.Action("index","widgets")">
+                  <a href="#">
                     <span class="sidenav-badge badge badge-primary">26</span>
                     <span class="sidenav-icon icon icon-works">&#40;</span>
                     <span class="sidenav-label">Widgets</span>
                   </a>
                 </li>
                 <li class="sidenav-item">
-                  <a href="@Url.Action("index","page-layouts")">
+                  <a href="#">
                     <span class="sidenav-icon icon icon-works">&#71;</span>
                     <span class="sidenav-label">Page layouts</span>
                   </a>
@@ -372,24 +393,24 @@
                   </a>
                   <ul class="sidenav level-2 collapse">
                     <li class="sidenav-heading">UI Elements</li>
-                    <li><a href="@Url.Action("index","arrows")">Arrows</a></li>
-                    <li><a href="@Url.Action("index","badges")">Badges</a></li>
-                    <li><a href="@Url.Action("index","buttons")">Buttons</a></li>
-                    <li><a href="@Url.Action("index","cards")">Cards</a></li>
-                    <li><a href="@Url.Action("index","dividers")">Dividers</a></li>
-                    <li><a href="@Url.Action("index","files")">Files</a></li>
-                    <li><a href="@Url.Action("index","flags")">Flags</a></li>
-                    <li><a href="@Url.Action("index","grid-system")">Grid system</a></li>
-                    <li><a href="@Url.Action("index","icons")">Icons</a></li>
-                    <li><a href="@Url.Action("index","labels")">Labels</a></li>
-                    <li><a href="@Url.Action("index","lists")">Lists</a></li>
-                    <li><a href="@Url.Action("index","modals")">Modals</a></li>
-                    <li><a href="@Url.Action("index","pricing-cards")">Pricing cards</a></li>
-                    <li><a href="@Url.Action("index","progress-bars")">Progress bars</a></li>
-                    <li><a href="@Url.Action("index","spinners")">Spinners</a></li>
-                    <li><a href="@Url.Action("index","tabs")">Tabs</a></li>
-                    <li><a href="@Url.Action("index","toastr")">Toastr</a></li>
-                    <li><a href="@Url.Action("index","typography")">Typography</a></li>
+                    <li><a href="#">Arrows</a></li>
+                    <li><a href="#">Badges</a></li>
+                    <li><a href="#">Buttons</a></li>
+                    <li><a href="#">Cards</a></li>
+                    <li><a href="#">Dividers</a></li>
+                    <li><a href="#">Files</a></li>
+                    <li><a href="#">Flags</a></li>
+                    <li><a href="#">Grid system</a></li>
+                    <li><a href="#">Icons</a></li>
+                    <li><a href="#">Labels</a></li>
+                    <li><a href="#">Lists</a></li>
+                    <li><a href="#">Modals</a></li>
+                    <li><a href="#">Pricing cards</a></li>
+                    <li><a href="#">Progress bars</a></li>
+                    <li><a href="#">Spinners</a></li>
+                    <li><a href="#">Tabs</a></li>
+                    <li><a href="#">Toastr</a></li>
+                    <li><a href="#">Typography</a></li>
                   </ul>
                 </li>
                 <li class="sidenav-item has-subnav">
@@ -399,19 +420,19 @@
                   </a>
                   <ul class="sidenav level-2 collapse">
                     <li class="sidenav-heading">Forms</li>
-                    <li><a href="@Url.Action("index","cropper")">Cropper</a></li>
-                    <li><a href="@Url.Action("index","form-controls")">Form controls</a></li>
-                    <li><a href="@Url.Action("index","form-layouts")">Form layouts</a></li>
-                    <li><a href="@Url.Action("index","form-validation")">Form validation</a></li>
-                    <li><a href="@Url.Action("index","form-wizard")">Form wizard</a></li>
-                    <li><a href="@Url.Action("index","input-mask")">Input mask</a></li>
-                    <li><a href="@Url.Action("index","md-form-controls")">Material form controls</a></li>
-                    <li><a href="@Url.Action("index","md-form-validation")">Material form validation</a></li>
-                    <li><a href="@Url.Action("index","pickers")">Pickers</a></li>
-                    <li><a href="@Url.Action("index","select2")">Select2</a></li>
-                    <li><a href="@Url.Action("index","sliders")">Sliders</a></li>
-                    <li><a href="@Url.Action("index","toggles")">Toggles</a></li>
-                    <li><a href="@Url.Action("index","uploader")">Uploader</a></li>
+                    <li><a href="#">Cropper</a></li>
+                    <li><a href="#">Form controls</a></li>
+                    <li><a href="#">Form layouts</a></li>
+                    <li><a href="#">Form validation</a></li>
+                    <li><a href="#">Form wizard</a></li>
+                    <li><a href="#">Input mask</a></li>
+                    <li><a href="#">Material form controls</a></li>
+                    <li><a href="#">Material form validation</a></li>
+                    <li><a href="#">Pickers</a></li>
+                    <li><a href="#">Select2</a></li>
+                    <li><a href="#">Sliders</a></li>
+                    <li><a href="#">Toggles</a></li>
+                    <li><a href="#">Uploader</a></li>
                   </ul>
                 </li>
                 <li class="sidenav-item has-subnav">
@@ -421,16 +442,16 @@
                   </a>
                   <ul class="sidenav level-2 collapse">
                     <li class="sidenav-heading">Tables</li>
-                    <li><a href="@Url.Action("index","static-tables")">Static tables</a></li>
-                    <li><a href="@Url.Action("index","responsive-tables")">Responsive tables</a></li>
-                    <li><a href="@Url.Action("index","bootstrap-tables")">Bootstrap tables</a></li>
-                    <li><a href="@Url.Action("index","datatables")">Datatables</a></li>
-                    <li><a href="@Url.Action("index","datatables-buttons")">Datatables Buttons</a></li>
-                    <li><a href="@Url.Action("index","datatables-responsive")">Datatables Responsive</a></li>
-                    <li><a href="@Url.Action("index","datatables-fixedheader")">Datatables FixedHeader</a></li>
-                    <li><a href="@Url.Action("index","datatables-rowreorder")">Datatables RowReorder</a></li>
-                    <li><a href="@Url.Action("index","datatables-colreorder")">Datatables ColReorder</a></li>
-                    <li><a href="@Url.Action("index","datatables-scroller")">Datatables Scroller</a></li>
+                    <li><a href="#">Static tables</a></li>
+                    <li><a href="#">Responsive tables</a></li>
+                    <li><a href="#">Bootstrap tables</a></li>
+                    <li><a href="#">Datatables</a></li>
+                    <li><a href="#">Datatables Buttons</a></li>
+                    <li><a href="#">Datatables Responsive</a></li>
+                    <li><a href="#">Datatables FixedHeader</a></li>
+                    <li><a href="#">Datatables RowReorder</a></li>
+                    <li><a href="#">Datatables ColReorder</a></li>
+                    <li><a href="#">Datatables Scroller</a></li>
                   </ul>
                 </li>
                 <li class="sidenav-item has-subnav">
@@ -440,8 +461,8 @@
                   </a>
                   <ul class="sidenav level-2 collapse">
                     <li class="sidenav-heading">Charts</li>
-                    <li><a href="@Url.Action("index","peity")">Peity</a></li>
-                    <li><a href="@Url.Action("index","chartjs")">Chart.js</a></li>
+                    <li><a href="#">Peity</a></li>
+                    <li><a href="#">Chart.js</a></li>
                   </ul>
                 </li>
                 <li class="sidenav-item has-subnav">
@@ -451,8 +472,8 @@
                   </a>
                   <ul class="sidenav level-2 collapse">
                     <li class="sidenav-heading">Maps</li>
-                    <li><a href="@Url.Action("index","vector-maps")">Vector maps</a></li>
-                    <li><a href="@Url.Action("index","google-maps")">Google maps</a></li>
+                    <li><a href="#">Vector maps</a></li>
+                    <li><a href="#">Google maps</a></li>
                   </ul>
                 </li>
                 <li class="sidenav-heading">Multi-Level Menu</li>
@@ -646,19 +667,19 @@
                   </a>
                   <ul class="sidenav level-2 collapse">
                     <li class="sidenav-heading">Authentication</li>
-                    <li><a href="@Url.Action("index","signup-1")" target="_blank">Sign up 1</a></li>
-                    <li><a href="@Url.Action("index","signup-2")" target="_blank">Sign up 2</a></li>
-                    <li><a href="@Url.Action("index","signup-3")" target="_blank">Sign up 3</a></li>
-                    <li><a href="@Url.Action("index","login-1")" target="_blank">Login 1</a></li>
-                    <li><a href="@Url.Action("index","login-2")" target="_blank">Login 2</a></li>
-                    <li><a href="@Url.Action("index","login-3")" target="_blank">Login 3</a></li>
-                    <li><a href="@Url.Action("index","password-1")" target="_blank">Reset password 1</a></li>
-                    <li><a href="@Url.Action("index","password-2")" target="_blank">Reset password 2</a></li>
-                    <li><a href="@Url.Action("index","password-3")" target="_blank">Reset password 3</a></li>
+                    <li><a href="#" target="_blank">Sign up 1</a></li>
+                    <li><a href="#" target="_blank">Sign up 2</a></li>
+                    <li><a href="#" target="_blank">Sign up 3</a></li>
+                    <li><a href="#" target="_blank">Login 1</a></li>
+                    <li><a href="#" target="_blank">Login 2</a></li>
+                    <li><a href="#" target="_blank">Login 3</a></li>
+                    <li><a href="#" target="_blank">Reset password 1</a></li>
+                    <li><a href="#" target="_blank">Reset password 2</a></li>
+                    <li><a href="#" target="_blank">Reset password 3</a></li>
                   </ul>
                 </li>
                 <li class="sidenav-item">
-                  <a href="@Url.Action("index","contacts")">
+                  <a href="#">
                     <span class="sidenav-icon icon icon-works">&#80;</span>
                     <span class="sidenav-label">Contacts</span>
                   </a>
@@ -670,31 +691,31 @@
                   </a>
                   <ul class="sidenav level-2 collapse">
                     <li class="sidenav-heading">Mailbox</li>
-                    <li><a href="@Url.Action("index","mail")">Mail 1</a></li>
-                    <li><a href="@Url.Action("index","inbox")">Mail 2</a></li>
-                    <li><a href="@Url.Action("index","compose")">Compose</a></li>
+                    <li><a href="#">Mail 1</a></li>
+                    <li><a href="#">Mail 2</a></li>
+                    <li><a href="#">Compose</a></li>
                   </ul>
                 </li>
                 <li class="sidenav-item">
-                  <a href="@Url.Action("index","messenger")">
+                  <a href="#">
                     <span class="sidenav-icon icon icon-works">&#78;</span>
                     <span class="sidenav-label">Messenger</span>
                   </a>
                 </li>
                 <li class="sidenav-item active">
-                  <a href="@Url.Action("index","profile")">
+                  <a href="#">
                     <span class="sidenav-icon icon icon-works">&#112;</span>
                     <span class="sidenav-label">Profile</span>
                   </a>
                 </li>
                 <li class="sidenav-item">
-                  <a href="@Url.Action("index","drive")">
+                  <a href="#">
                     <span class="sidenav-icon icon icon-works">&#231;</span>
                     <span class="sidenav-label">Drive</span>
                   </a>
                 </li>
                 <li class="sidenav-item">
-                  <a href="@Url.Action("index","landing-page")" target="_blank">
+                  <a href="#" target="_blank">
                     <span class="sidenav-icon icon icon-works">&#34;</span>
                     <span class="sidenav-label">Landing Page</span>
                   </a>
@@ -706,9 +727,9 @@
                   </a>
                   <ul class="sidenav level-2 collapse">
                     <li class="sidenav-heading">E-commerce</li>
-                    <li><a href="@Url.Action("index","store")">Store</a></li>
-                    <li><a href="@Url.Action("index","shopping-cart")">Shopping cart</a></li>
-                    <li><a href="@Url.Action("index","product")">Product</a></li>
+                    <li><a href="#">Store</a></li>
+                    <li><a href="#">Shopping cart</a></li>
+                    <li><a href="#">Product</a></li>
                   </ul>
                 </li>
                 <li class="sidenav-item has-subnav">
@@ -718,10 +739,10 @@
                   </a>
                   <ul class="sidenav level-2 collapse">
                     <li class="sidenav-heading">Other pages</li>
-                    <li><a href="@Url.Action("index","blank-page")">Blank Page</a></li>
-                    <li><a href="@Url.Action("index","404")" target="_blank">404</a></li>
-                    <li><a href="@Url.Action("index","500")" target="_blank">500</a></li>
-                    <li><a href="@Url.Action("index","invoice")">Invoice</a></li>
+                    <li><a href="#">Blank Page</a></li>
+                    <li><a href="#" target="_blank">404</a></li>
+                    <li><a href="#" target="_blank">500</a></li>
+                    <li><a href="#">Invoice</a></li>
                   </ul>
                 </li>
               </ul>
