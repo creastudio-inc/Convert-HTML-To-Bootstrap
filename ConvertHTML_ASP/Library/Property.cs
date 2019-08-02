@@ -16,5 +16,7 @@ namespace Library
         public static String RacinePathContent = String.Empty;
         public static Boolean IsFinish = false;
         public static ASPModel ASPModel;
+        public static ASPScripts ASPScripts = new ASPScripts();
+        public static ASPStyles ASPStyles= new ASPStyles();
     }
 }

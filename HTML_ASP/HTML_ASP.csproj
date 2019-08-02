@@ -48,9 +48,6 @@
     <Reference Include="Alx.Web.Screenshot, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Web.Screenshot.1.0.0.1\lib\net451\Alx.Web.Screenshot.dll</HintPath>
     </Reference>
-    <Reference Include="ConvertHTML_ASP">
-      <HintPath>..\ConvertHTML_ASP\bin\Debug\ConvertHTML_ASP.dll</HintPath>
-    </Reference>
     <Reference Include="HtmlRenderer, Version=1.5.0.6, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\HtmlRenderer.Core.1.5.0.6\lib\net45\HtmlRenderer.dll</HintPath>
     </Reference>
@@ -685,6 +682,12 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ConvertHTML_ASP\Library.csproj">
+      <Project>{15b53dd0-cc11-4c1f-ab28-66d25879da0c}</Project>
+      <Name>Library</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
