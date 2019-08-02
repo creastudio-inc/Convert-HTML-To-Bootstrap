@@ -25,6 +25,7 @@ namespace ConvertHTMLToBootstrap.Controllers
         {
             Library.Property.ASPModel = model;
             Library.Property.RacineURL = model.LinkProject; 
+            Library.Property.RacinePathblankPage = model.blankPage; 
             Library.Property.RacinePathContent = Server.MapPath("Content"); 
             Library.Main Convert = new Library.Main();
             // create Folder 

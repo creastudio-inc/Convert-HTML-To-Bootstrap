@@ -68,7 +68,7 @@ namespace Library
         {
             try
             {
-
+ 
                 var subpath = path.Split('/');
                 String sub = "";
                 for (int i = 0; i < subpath.Length - 1; i++)
@@ -87,9 +87,9 @@ namespace Library
                     );
                 }
             }
-            catch 
+            catch(Exception ex)
             {
-
+                throw ex;
             }
         }
 

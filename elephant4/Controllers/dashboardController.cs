@@ -5,9 +5,15 @@ using System.Web;
 using System.Web.Mvc; 
 
 namespace elephant4.Controllers{ 
-	 public class profileController : Controller{ 
+	 public class dashboardController : Controller{ 
 
-	 public ActionResult Cv() 
+	 public ActionResult dashboard2() 
+	 	 {
+	 	 	 return View();
+	 	 }
+
+
+	 public ActionResult dashboard3() 
 	 	 {
 	 	 	 return View();
 	 	 }
